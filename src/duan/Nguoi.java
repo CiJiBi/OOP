@@ -1,34 +1,60 @@
-pageage duan;
-// Lớp trừu tượng
+package duan;
+import java.util.Scanner;
 public abstract class Nguoi {
     protected String ma;
-    protected String hoTen;
+    protected String hoten;
     protected String sdt;
-    protected String diaChi;
-
-    // Yêu cầu 2: Hàm thiết lập (Constructor)
-    public Nguoi() {}
-
-    public Nguoi(String ma, String hoTen, String sdt, String diaChi) {
-        this.ma = ma;
-        this.hoTen = hoTen;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
+    protected String diachi;
+    public Nguoi(){
+        this.ma=null;
+        this.hoten=null;
+        this.sdt=null;
+        this.diachi=null;
     }
-
-    //Get Set
-    public String getMa() { return ma; }
-    public void setMa(String ma) { this.ma = ma; }
-    public String getHoTen() { return hoTen; }
-    public void setHoTen(String hoTen) { this.hoTen = hoTen; }
-    // ... (Thêm các getter/setter khác)
-
-    // Hàm trừu tượng
-    // Mỗi loại người (NV, KH) sẽ có cách hiển thị thông tin khác nhau
-    public abstract void hienThiThongTin();
-
-    @Override
-    public String toString() {
-        return String.format("| %-10s | %-20s | %-12s | %-25s ", ma, hoTen, sdt, diaChi);
+    public Nguoi(String ma,String hoten,String sdt,String diachi){
+        this.ma=ma;
+        this.hoten=hoten;
+        this.sdt=sdt;
+        this.diachi=diachi;
+    }
+    public String getMa(){
+        return ma;
+    }
+    public void setMa(String ma){
+        this.ma=ma;
+    }
+    public String getHoten(){
+        return hoten;
+    }
+    public void setHoten(String hoten){
+        this.hoten=hoten;
+    }
+    public String getSdt(){
+        return sdt;
+    }
+    public void setSdt(String sdt){
+        this.sdt=sdt;
+    }
+    public String getDiachi(){
+        return diachi;
+    }
+    public void setDiachi(String diachi){
+        this.diachi=diachi;
+    }
+    public void input(Scanner sc){
+       
+        System.out.println("Nhập thông tin: ");
+        System.out.println("Họ tên: ");
+        this.hoten= sc.nextLine();
+        System.out.println("Số điện thoại: ");
+        this.sdt= sc.nextLine();
+        System.out.println("Địa chỉ: ");
+        this.diachi= sc.nextLine();
+    }
+    public abstract void hienthithongtin();
+    public abstract double chietkhauorthuong();
+    @Override 
+    public String toString(){
+        return String.format("| %-10s | %-20s | %-15s | %-20s |",this.ma,this.hoten,this.sdt,this.diachi);
     }
 }
